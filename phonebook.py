@@ -5,7 +5,7 @@ contactBook = []
 def CheckName(NameStr):
 	if NameStr == "":
 		return False
-	return True		
+	return True
 def CheckPhone(phoneNo): 
 	if str.isdigit(phoneNo) or phoneNo == "":
     		return True
@@ -16,18 +16,25 @@ def CheckEmail(email):
 	return False   	
 def insertContact():
 	name = input("insert Name:")
-	while not CheckName:
+	while not CheckName(name):
 			print("the name must have a Value")
 			name = input("insert Name:")	
 	cellphone = input("insert cellphone:")
 	while not CheckPhone(cellphone):
 			print("the number must have only digit")
 			cellphone = input("insert cellphone:")
-	#contactBook.append(contact.Contact(name,cellphone))		
-	#contact.Contact(name,cellphone)
-	print("good")
+	
+	#newContact=contact.Contact(name,cellphone)
+	contactBook.append(contact.Contact(name,cellphone))	
 def insertFriendContact():	
-	insertContact()
+	name = input("insert Name:")
+	while not CheckName(name):
+			print("the name must have a Value")
+			name = input("insert Name:")	
+	cellphone = input("insert cellphone:")
+	while not CheckPhone(cellphone):
+			print("the number must have only digit")
+			cellphone = input("insert cellphone:")
 	homePhone = input("insert home Phone:")
 	while not CheckPhone(homePhone):
 			print("the no must have only digit")
@@ -37,7 +44,14 @@ def insertFriendContact():
 			print("email must contain '.' and '@'")
 			personalEmail = input("insert personal Email:")	
 def insertProfessionalContact():
-	insertContact()
+	name = input("insert Name:")
+	while not CheckName(name):
+			print("the name must have a Value")
+			name = input("insert Name:")	
+	cellphone = input("insert cellphone:")
+	while not CheckPhone(cellphone):
+			print("the number must have only digit")
+			cellphone = input("insert cellphone:")
 	workPhone = input("insert work Phone:")
 	while not CheckPhone(workPhone):
 				print("the number must have only digit")
