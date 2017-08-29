@@ -2,12 +2,12 @@
 import sys
 import contact
 contactBook = []
-def CheckName(Name):
-	if name != None:
-    		return True
-	return False		
+def CheckName(NameStr):
+	if NameStr == "":
+		return False
+	return True		
 def CheckPhone(phoneNo): 
-	if str.isdigit(phoneNo):
+	if str.isdigit(phoneNo) or phoneNo == "":
     		return True
 	return False	 
 def CheckEmail(email):
@@ -16,15 +16,16 @@ def CheckEmail(email):
 	return False   	
 def insertContact():
 	name = input("insert Name:")
-	while not CheckName(name):
+	while not CheckName:
 			print("the name must have a Value")
 			name = input("insert Name:")	
 	cellphone = input("insert cellphone:")
 	while not CheckPhone(cellphone):
-			print("the no must have only digit")
+			print("the number must have only digit")
 			cellphone = input("insert cellphone:")
-	contactBook.append(contact.Contact(name,cellphone))		
-	#contact.Contact(name,cellphone)		
+	#contactBook.append(contact.Contact(name,cellphone))		
+	#contact.Contact(name,cellphone)
+	print("good")
 def insertFriendContact():	
 	insertContact()
 	homePhone = input("insert home Phone:")
@@ -34,7 +35,7 @@ def insertFriendContact():
 	personalEmail = input("insert personal Email:")
 	while (not CheckEmail(personalEmail)) or (personalEmail == None):
 			print("email must contain '.' and '@'")
-			personalEmail = input("insert personal Email:")
+			personalEmail = input("insert personal Email:")	
 def insertProfessionalContact():
 	insertContact()
 	workPhone = input("insert work Phone:")
