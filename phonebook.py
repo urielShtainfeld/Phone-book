@@ -1,19 +1,59 @@
 #uriel shtainfeld 200956795
 import sys
 import contact
+
 contactBook = []
-def CheckName(NameStr):
-			if NameStr == "":
-				return False
-			return True
-def CheckPhone(phoneNo): 
-	if str.isdigit(phoneNo) or phoneNo == "":
-    		return True
-	return False	 
-def CheckEmail(email):
-	if str.__contains__('@') and str.__contains__('.'):
-		return True
-	return False   	
+def main():
+    	Start()	
+def Start():
+	answer = 0
+	while   answer != 6:
+			answer = input("What would you like to do? \n"
+					"1 - Add a new contact \n"
+					"2 - Show all contacts \n"
+					"3 - Edit a contact \n"
+					"4 - Find a contact \n"
+					"5 - Delete a contact \n"
+					"6 - Exit \n"
+					"-->")
+			try:
+				numAnswer = int(answer)
+			except:
+				print("That's not an number!")
+			if numAnswer == 1:
+				insertNewContact()
+			elif numAnswer ==2:
+				PrintAllContacts()
+			elif numAnswer ==3:
+				print("need to add function")
+			elif numAnswer ==4:
+				print("need to add function")
+			elif numAnswer ==5:
+				print("need to add function")	
+			elif numAnswer ==6:
+				sys.exit();		
+	pass
+			
+def insertNewContact():	
+	letterAnswer = input("Should this contact be Simple (S), Friend (F), Professional (P) or Both (B)?")
+	if letterAnswer not in["S","F","P","B"]:
+			print('Insert S or F or P or B only')  
+			insertNewContact()	
+			pass
+	else:
+			if letterAnswer == "S":
+    				insertContact()
+			elif letterAnswer == "F":
+    				insertFriendContact()		
+			elif letterAnswer == "P":
+    				insertProfessional()
+			elif letterAnswer == "B":
+        			insertProfessionalFriendContact()
+						
+def PrintAllContacts():
+	for x in range(0,len(contactBook)):
+   		 print("%d %s" % (x+1,contactBook.__str__))	
+
 def insertContact():
 	name = input("insert Name:")
 	while not CheckName(name):
@@ -84,51 +124,19 @@ def insertProfessionalFriendContact():
 	workEmail = input("insert work Email:")
 	while (not CheckEmail(workEmail)) or (workEmail == None):
 				print("email must contain '.' and '@'")
-				personalEmail = input("insert Work Email:")				
-def insertNewContact():	
-	letterAnswer = input("Should this contact be Simple (S), Friend (F), Professional (P) or Both (B)?")
-	if letterAnswer not in["S","F","P","B"]:
-			print('Insert S or F or P or B only')  
-			input1()	
-			pass
-	else:
-			if letterAnswer == "S":
-    				insertContact()
-			elif letterAnswer == "F":
-    				insertFriendContact()		
-			elif letterAnswer == "P":
-    				insertProfessional()
-			elif letterAnswer == "B":
-        			insertProfessionalFriendContact()
-def PrintAllContacts():
-	for x in range(0,len(contactBook)):
-   		 print("%d %s" % (x+1,contactBook.__str__))						
-def Start():
-	answer = 0
-	while   answer != 6:
-			answer = input("What would you like to do? \n"
-					"1 - Add a new contact \n"
-					"2 - Show all contacts \n"
-					"3 - Edit a contact \n"
-					"4 - Find a contact \n"
-					"5 - Delete a contact \n"
-					"6 - Exit \n"
-					"-->")
-			try:
-				numAnswer = int(answer)
-			except:
-				print("That's not an number!")
-			if numAnswer == 1:
-				insertNewContact()
-			elif numAnswer ==2:
-				PrintAllContacts()
-			elif numAnswer ==3:
-				print("need to add function")
-			elif numAnswer ==4:
-				print("need to add function")
-			elif numAnswer ==5:
-				print("need to add function")	
-			elif numAnswer ==6:
-				sys.exit();		
-	pass							    	
-Start()	
+				personalEmail = input("insert Work Email:")	
+def CheckName(NameStr):
+			if NameStr == "":
+				return False
+			return True
+def CheckPhone(phoneNo): 
+	if str.isdigit(phoneNo) or phoneNo == "":
+    		return True
+	return False	 
+def CheckEmail(email):
+	if str.__contains__('@') and str.__contains__('.'):
+		return True
+	return False  
+
+if __name__ == '__main__':
+    main()
