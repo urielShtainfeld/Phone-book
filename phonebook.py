@@ -3,9 +3,9 @@ import sys
 import contact
 contactBook = []
 def CheckName(NameStr):
-	if NameStr == "":
-		return False
-	return True
+			if NameStr == "":
+				return False
+			return True
 def CheckPhone(phoneNo): 
 	if str.isdigit(phoneNo) or phoneNo == "":
     		return True
@@ -102,7 +102,7 @@ def input1():
         			insertProfessionalFriendContact()
 def input2():
 	for x in range(0,len(contactBook)):
-   		 print("%d %s" % (x+1,contactBook.__repr__))						
+   		 print("%d %s" % (x+1,contactBook.__str__))						
 def Start():
 	answer = 0
 	while   answer != 6:
@@ -130,5 +130,6 @@ def Start():
 				print("need to add function")	
 			elif numAnswer ==6:
 				sys.exit();		
-	pass			
-Start()			
+	pass							    	
+Start()	
+
