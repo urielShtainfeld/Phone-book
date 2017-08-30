@@ -85,7 +85,7 @@ def insertProfessionalFriendContact():
 	while (not CheckEmail(workEmail)) or (workEmail == None):
 				print("email must contain '.' and '@'")
 				personalEmail = input("insert Work Email:")				
-def input1():	
+def insertNewContact():	
 	letterAnswer = input("Should this contact be Simple (S), Friend (F), Professional (P) or Both (B)?")
 	if letterAnswer not in["S","F","P","B"]:
 			print('Insert S or F or P or B only')  
@@ -100,7 +100,7 @@ def input1():
     				insertProfessional()
 			elif letterAnswer == "B":
         			insertProfessionalFriendContact()
-def input2():
+def PrintAllContacts():
 	for x in range(0,len(contactBook)):
    		 print("%d %s" % (x+1,contactBook.__str__))						
 def Start():
@@ -119,9 +119,9 @@ def Start():
 			except:
 				print("That's not an number!")
 			if numAnswer == 1:
-				input1()
+				insertNewContact()
 			elif numAnswer ==2:
-				input2()
+				PrintAllContacts()
 			elif numAnswer ==3:
 				print("need to add function")
 			elif numAnswer ==4:
