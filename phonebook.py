@@ -23,8 +23,6 @@ def insertContact():
 	while not CheckPhone(cellphone):
 			print("the number must have only digit")
 			cellphone = input("insert cellphone:")
-	
-	#newContact=contact.Contact(name,cellphone)
 	contactBook.append(contact.Contact(name,cellphone))	
 def insertFriendContact():	
 	name = input("insert Name:")
@@ -43,6 +41,7 @@ def insertFriendContact():
 	while (not CheckEmail(personalEmail)) or (personalEmail == None):
 			print("email must contain '.' and '@'")
 			personalEmail = input("insert personal Email:")	
+	contactBook.append(contact.FriendContact(name,cellphone,homePhone,personalEmail))		
 def insertProfessionalContact():
 	name = input("insert Name:")
 	while not CheckName(name):
@@ -59,7 +58,8 @@ def insertProfessionalContact():
 	workEmail = input("insert work Email:")
 	while (not CheckEmail(workEmail)) or (workEmail == None):
 				print("email must contain '.' and '@'")
-				personalEmail = input("insert Work Email:")
+				workEmail = input("insert Work Email:")
+	contactBook.append(contact.ProfessionalContact(name,cellphone,workPhone,workEmail))			
 def insertProfessionalFriendContact():
 	name = input("insert Name:")
 	while not CheckName(name):
@@ -100,8 +100,9 @@ def input1():
     				insertProfessional()
 			elif letterAnswer == "B":
         			insertProfessionalFriendContact()
-			
-					
+def input2():
+	for x in range(0,len(contactBook)):
+   		 print("%d %s" % (x+1,contactBook.__repr__))						
 def Start():
 	answer = 0
 	while   answer != 6:
@@ -120,20 +121,14 @@ def Start():
 			if numAnswer == 1:
 				input1()
 			elif numAnswer ==2:
-				print("1")
+				input2()
 			elif numAnswer ==3:
-				print("1")
+				print("need to add function")
 			elif numAnswer ==4:
-				print("1")
+				print("need to add function")
 			elif numAnswer ==5:
-				print("1")	
+				print("need to add function")	
 			elif numAnswer ==6:
-				sys.exit();	
-
-		#else
-		#	print("you must enter number between 1 and 6")				
-		#print 'you must enter number between 1 and 6'
-			#print x	
-			#If x < 1 And x > 6 then	
+				sys.exit();		
 	pass			
 Start()			
