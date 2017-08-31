@@ -4,37 +4,39 @@ class Contact(object):
 	def __init__(self,name,cellphone,olderContact = None):
 		if olderContact != None:	
 				olderContact.name = name
-				if cellphone != "" :
-					olderContact.cellphone = cellphone
+
+				olderContact.cellphone = cellphone
 				self = olderContact	
 		else:
 				self.name = name
-				if cellphone != "" :
-    					self.cellphone = cellphone
+				self.cellphone = cellphone
 
-	def __lt__(ContactB):
-		if len(self.getName())<len(ContactB.getName):
-				minLen = len(self.getName())
+	def __lt__(self,other):
+		if len(self.name)<len(other.name):
+				minLen = len(self.name)
 		else:
-				minLen = len(ContactB.getName())		
+				minLen = len(other.name)		
 		for i in range(0,minLen):	
-			if 	ord(self.getName()[i]) < ord(contactB.getName()[i]):
+			if 	ord(self.name[i]) < ord(other.name[i]):
 				return True
-			elif ord(self.getName()[i]) < ord(contactB.getName()[i]):
+			elif ord(self.name[i]) < ord(other.name[i]):
 				return False
-		if len(self.getName())<len(ContactB.getName):
+		if len(self.name)<len(other.name):
 			return True		
 		return False	
-	def getName():
+	def getName(self):
 		return(self.name)
-	def getCellphone():
+	def getCellphone(self):
 		return(self.cellphone)
 	def __str__(self):
-		return ("Name: %s \n cellphone: %s" % (self.name,self.cellphone))
+		returnValue = "Name: %s \n "  % (self.name)
+		if self.cellphone != "" :
+			returnValue = returnValue + ("Cellphone %s \n" % (self.cellphone))
+		return returnValue	
 	def	Match(key):
-		if getName().find(key, beg=0, end=len(getName())) !=-1 :
+		if self.getName().find(key, beg=0, end=len(self.getName())) !=-1 :
     			return True
-		if getCellphone().find(key, beg=0, end=len(getName())) !=-1 :
+		if getCellphone().find(key, beg=0, end=len(self.getName())) !=-1 :
     			return True	
 		return False
 class FriendContact(Contact) :
@@ -42,30 +44,30 @@ class FriendContact(Contact) :
 			def __init__(self,name,cellphone,homePhone,personalEmail,oldeFriendContact = None):
 				if oldeFriendContact != None:					
 					Contact(name,cellphone,oldeFriendContact)
-					if homePhone != "" :
-    						oldeFriendContact.homePhone = homePhone
-					if personalEmail != "" :
-						oldeFriendContact.personalEmail = personalEmail
+					oldeFriendContact.homePhone = homePhone
+					oldeFriendContact.personalEmail = personalEmail
 					self = oldeFriendContact
 				else:
 						Contact(name,cellphone)
-						if homePhone != "":
-							self.homePhone = homePhone
-						if personalEmail != "" :
-							self.personalEmail = personalEmail
-			def gethomePhone():
+						self.homePhone = homePhone
+						self.personalEmail = personalEmail
+			def gethomePhone(self):
 				return(self.homePhone)		
-			def getpersonalEmail():
+			def getpersonalEmail(self):
 				return(self.personalEmail)
 
 def __str__(self):
-		return Contact.__str__() + ("\n home Phone: %s \n Personal Email: %s" % (self.homePhone,self.personalEmail))
+		returnValue = Contact.__str__() 
+		if self.home !='' :
+		 	returnValue = returnValue +("\n home Phone: %s \n " % (self.homePhone))
+		if self.personalEmail != '':
+		  returnValue = returnValue + ("Personal Email: %s" % (self.personalEmail))
 def	Match(key):
 		if Contact.Match(key) == True:
     			return True
-		if gethomePhone().find(key, beg=0, end=len(getName())) !=-1 :
+		if gethomePhone().find(key, beg=0, end=len(gethomePhone())) !=-1 :
 				return True
-		if getpersonalEmail().find(key, beg=0, end=len(getName())) !=-1 :
+		if getpersonalEmail().find(key, beg=0, end=len(getpersonalEmail())) !=-1 :
 				return True	
 		return False
 class ProfessionalContact(Contact):
@@ -86,17 +88,21 @@ class ProfessionalContact(Contact):
 							self.workEmail = workEmail
 		
 	def __str__(self):
-		return Contact.__str__() + ("\n work Phone: %s \n work Email: %s" % (self.workPhone,self.workEmail))
-	def getworkPhone():
+		returnValue = Contact.__str__() 
+		if self.workPhone != "":
+			returnValue = returnValue + (("\n work Phone: %s") % (self.workPhone))
+		if self.workEmail != "":			
+			returnValue = returnValue + ("\n work Email: %s" % (self.workEmail))
+	def getworkPhone(self):
     		return(self.workPhone)
-	def getWorkEmail():
+	def getWorkEmail(self):
     		return(self.workEmail)		
 	def	Match(key):
 		if Contact.Match(key) == True:
 				return True
-		if getworkPhone().find(key, beg=0, end=len(getName())) !=-1 :
+		if self.getworkPhone().find(key, beg=0, end=len(self.getworkPhone())) !=-1 :
 				return True
-		if getWorkEmail().find(key, beg=0, end=len(getName())) !=-1 :
+		if self.getWorkEmail().find(key, beg=0, end=len(self.getWorkEmail())) !=-1 :
 				return True	
 		return False 	
 class ProfessionalFriendContact(FriendContact,ProfessionalContact):
