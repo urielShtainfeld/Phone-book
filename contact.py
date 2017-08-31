@@ -12,19 +12,19 @@ class Contact(object):
 				if cellphone != "" :
     					self.cellphone = cellphone
 
-	def __lt__():
-		if len(contactA.getName())<len(ContactB.getName):
-				minLen = len(contactA.getName())
-				default = 'A'
+	def __lt__(ContactB):
+		if len(self.getName())<len(ContactB.getName):
+				minLen = len(self.getName())
 		else:
-				minLen = len(ContactB.getName())
-				default = 'B'
+				minLen = len(ContactB.getName())		
 		for i in range(0,minLen):	
-			if 	ord(contactA.getName()[i]) < ord(contactB.getName()[i]):
-				return 'A'
-			elif ord(contactA.getName()[i]) < ord(contactB.getName()[i]):
-				return 'B'
-		return default			
+			if 	ord(self.getName()[i]) < ord(contactB.getName()[i]):
+				return True
+			elif ord(self.getName()[i]) < ord(contactB.getName()[i]):
+				return False
+		if len(self.getName())<len(ContactB.getName):
+			return True		
+		return False	
 	def getName():
 		return(self.name)
 	def getCellphone():
