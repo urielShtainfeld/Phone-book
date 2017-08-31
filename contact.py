@@ -13,15 +13,30 @@ class Contact(object):
     					self.cellphone = cellphone
 
 	def __lt__():
-		print("uriel")
-	def __str__(self):
-		return ("Name: %s \n cellphone: %s" % (self.name,self.cellphone))
-	def	Match(subString):
-		print("uriel")
+		if len(contactA.getName())<len(ContactB.getName):
+				minLen = len(contactA.getName())
+				default = 'A'
+		else:
+				minLen = len(ContactB.getName())
+				default = 'B'
+		for i in range(0,minLen):	
+			if 	ord(contactA.getName()[i]) < ord(contactB.getName()[i]):
+				return 'A'
+			elif ord(contactA.getName()[i]) < ord(contactB.getName()[i]):
+				return 'B'
+		return default			
 	def getName():
 		return(self.name)
 	def getCellphone():
 		return(self.cellphone)
+	def __str__(self):
+		return ("Name: %s \n cellphone: %s" % (self.name,self.cellphone))
+	def	Match(key):
+		if getName().find(key, beg=0, end=len(getName())) !=-1 :
+    			return True
+		if getCellphone().find(key, beg=0, end=len(getName())) !=-1 :
+    			return True	
+		return False
 class FriendContact(Contact) :
 			"""docstring for FriendContact"""
 			def __init__(self,name,cellphone,homePhone,personalEmail,oldeFriendContact = None):
@@ -44,8 +59,15 @@ class FriendContact(Contact) :
 				return(self.personalEmail)
 
 def __str__(self):
-		return Contact.__str__ + ("\n home Phone: %s \n Personal Email: %s" % (self.homePhone,self.personalEmail))
-
+		return Contact.__str__() + ("\n home Phone: %s \n Personal Email: %s" % (self.homePhone,self.personalEmail))
+def	Match(key):
+		if Contact.Match(key) == True:
+    			return True
+		if gethomePhone().find(key, beg=0, end=len(getName())) !=-1 :
+				return True
+		if getpersonalEmail().find(key, beg=0, end=len(getName())) !=-1 :
+				return True	
+		return False
 class ProfessionalContact(Contact):
 	"""docstring for ClassName"""
 	def __init__(self,name,cellphone,workPhone,workEmail,oldProffesionContact = None):
@@ -64,16 +86,28 @@ class ProfessionalContact(Contact):
 							self.workEmail = workEmail
 		
 	def __str__(self):
-		return Contact.__str__ + ("\n work Phone: %s \n work Email: %s" % (self.workPhone,self.workEmail))
+		return Contact.__str__() + ("\n work Phone: %s \n work Email: %s" % (self.workPhone,self.workEmail))
 	def getworkPhone():
     		return(self.workPhone)
 	def getWorkEmail():
     		return(self.workEmail)		
-	 	
+	def	Match(key):
+		if Contact.Match(key) == True:
+				return True
+		if getworkPhone().find(key, beg=0, end=len(getName())) !=-1 :
+				return True
+		if getWorkEmail().find(key, beg=0, end=len(getName())) !=-1 :
+				return True	
+		return False 	
 class ProfessionalFriendContact(FriendContact,ProfessionalContact):
 	def __init__(self,name,cellphone,homePhone,personalEmail,workPhone,workEmail,oldProfessionalFriendContact = None):
 		FriendContact.__init__(self,name,cellphone,homePhone,personalEmail,oldProfessionalFriendContact = None)
 		ProfessionalContact.__init__(self,name,cellphone,workPhone,workEmail,oldProfessionalFriendContact)
 	def __str__(self):
-		return FriendContact.__str__ + ProfessionalContact.__str__
-			
+		return FriendContact.__str__() + ProfessionalContact.__str__()
+	def	Match(key):
+		if FriendContact.Match(key) == True:
+				return True
+		if ProfessionalContact.Match(key) == True:
+				return True
+		return False 		

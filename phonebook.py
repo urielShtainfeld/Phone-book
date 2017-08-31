@@ -27,9 +27,9 @@ def Start():
 			elif numAnswer ==3:
 				print("need to add function")
 			elif numAnswer ==4:
-				print("need to add function")
+				searchContact()
 			elif numAnswer ==5:
-				print("need to add function")	
+				deleteContact()	
 			elif numAnswer ==6:
 				sys.exit();		
 	pass
@@ -72,8 +72,52 @@ def replaceContact():
 		replaceContact()
 		pass
 	print("For the following fields click enter if there's no change, a new value if you want to replace the field,"
-	"or x if you want to delete the field (the name field cannot be deleted).")
-	
+			"or x if you want to delete the field (the name field cannot be deleted).")
+	if letterAnswer == "S":
+		replaceContact(contactBook[numAnswer-1])
+	elif letterAnswer == "F":
+		replaceFriendContact(contactBook[numAnswer-1])		
+	elif letterAnswer == "P":
+		replaceProfessional(contactBook[numAnswer-1])
+	elif letterAnswer == "B":
+		replaceFriendContact(contactBook[numAnswer-1])		
+	pass
+def replaceContact(oldContact):
+	name = input("name: (%s)") % oldContact.getName()
+	while not CheckName(name):
+			print("the name must have a Value")
+			name = input("name: (%s)") % oldContact.getName()
+	cellphone = input("cellphone: (%s)") % oldContact.getCellphone()
+	while not CheckPhone(cellphone):
+			print("the number must have only digit")
+			cellphone = input("cellphone: (%s)") % oldContact.getCellphone()
+def replaceFriendContact(oldContact):
+	name = input("name: (%s)") % oldContact.getName()
+	while not CheckName(name):
+			print("the name must have a Value")
+			name = input("name: (%s)") % oldContact.getName()
+	cellphone = input("cellphone: (%s)") % oldContact.getCellphone()
+	while not CheckPhone(cellphone):
+			print("the number must have only digit")
+			cellphone = input("cellphone: (%s)") % oldContact.getCellphone()
+
+def searchContact():
+		key = input("Type contact details (name, phone, email):")
+		for x in range(0,len(contactBook)):	
+			if contactBook[x].Match(key) == True:
+				contactBook[x].__str__()
+		pass			
+def deleteContact():
+	answer = input("Enter a valid number of the contact you wish to delete:")
+	try:
+		numAnswer = int(answer)
+	except:	
+		print("That's not an number!")
+	if numAnswer >= len(contactBook):
+		print("that's not a valid number")
+		deleteContact()
+		pass
+	contactBook.Delete(contactBook[numAnswer-1])
 	pass
 def insertContact():
 	name = input("insert Name:")
@@ -100,7 +144,7 @@ def insertFriendContact():
 			print("the no must have only digit")
 			homePhone = input("insert home Phone:")
 	personalEmail = input("insert personal Email:")
-	while (not CheckEmail(personalEmail)) or (personalEmail == None):
+	while (not CheckEmail(personalEmail)) or (personalEmail == ""):
 			print("email must contain '.' and '@'")
 			personalEmail = input("insert personal Email:")	
 	contactBook.append(contact.FriendContact(name,cellphone,homePhone,personalEmail))	
@@ -119,7 +163,7 @@ def insertProfessionalContact():
 				print("the number must have only digit")
 				workPhone = input("insert work Phone:")
 	workEmail = input("insert work Email:")
-	while (not CheckEmail(workEmail)) or (workEmail == None):
+	while (not CheckEmail(workEmail)) or (workEmail == ""):
 				print("email must contain '.' and '@'")
 				workEmail = input("insert Work Email:")
 	contactBook.append(contact.ProfessionalContact(name,cellphone,workPhone,workEmail))
@@ -138,7 +182,7 @@ def insertProfessionalFriendContact():
 			print("the number must have only digit")
 			homePhone = input("insert home Phone:")
 	personalEmail = input("insert personal Email:")
-	while (not CheckEmail(personalEmail)) or (personalEmail == None):
+	while (not CheckEmail(personalEmail)) or (personalEmail == ""):
 			print("email must contain '.' and '@'")
 			personalEmail = input("insert personal Email:")
 	workPhone = input("insert work Phone:")
@@ -146,7 +190,7 @@ def insertProfessionalFriendContact():
 				print("the number must have only digit")
 				workPhone = input("insert work Phone:")
 	workEmail = input("insert work Email:")
-	while (not CheckEmail(workEmail)) or (workEmail == None):
+	while (not CheckEmail(workEmail)) or (workEmail == ""):
 				print("email must contain '.' and '@'")
 				personalEmail = input("insert Work Email:")	
 	contactBook.append(contact.ProfessionalFriendContact(name,cellphone,homePhone,personalEmail,workPhone,workEmail))			
