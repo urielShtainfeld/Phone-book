@@ -18,8 +18,10 @@ class Contact(object):
 		return ("Name: %s \n cellphone: %s" % (self.name,self.cellphone))
 	def	Match(subString):
 		print("uriel")
-	def __repr__(self):
-		return self.__str__(self)		
+	def getName():
+		return(self.name)
+	def getCellphone():
+		return(self.cellphone)
 class FriendContact(Contact) :
 			"""docstring for FriendContact"""
 			def __init__(self,name,cellphone,homePhone,personalEmail,oldeFriendContact = None):
@@ -36,7 +38,10 @@ class FriendContact(Contact) :
 							self.homePhone = homePhone
 						if personalEmail != "" :
 							self.personalEmail = personalEmail
-    						
+			def gethomePhone():
+				return(self.homePhone)		
+			def getpersonalEmail():
+				return(self.personalEmail)
 
 def __str__(self):
 		return Contact.__str__ + ("\n home Phone: %s \n Personal Email: %s" % (self.homePhone,self.personalEmail))
@@ -58,9 +63,12 @@ class ProfessionalContact(Contact):
 						if workEmail != "" :
 							self.workEmail = workEmail
 		
-def __str__(self):
+	def __str__(self):
 		return Contact.__str__ + ("\n work Phone: %s \n work Email: %s" % (self.workPhone,self.workEmail))
-		
+	def getworkPhone():
+    		return(self.workPhone)
+	def getWorkEmail():
+    		return(self.workEmail)		
 	 	
 class ProfessionalFriendContact(FriendContact,ProfessionalContact):
 	def __init__(self,name,cellphone,homePhone,personalEmail,workPhone,workEmail,oldProfessionalFriendContact = None):
