@@ -188,43 +188,43 @@ def insertProfessionalFriendContact():
 
 
 def replaceSimpleContact(ReplacedContact):
-	name = input("name: (%s)") % ReplacedContact.getName()
+	name = input(("name: ( %s )") % (ReplacedContact.getName()))
 	while not CheckName(name):
 			print("the name must have a Value")
-			name = input("name: (%s)") % ReplacedContact.getName()
-	cellphone = input("cellphone: (%s)") % ReplacedContact.getCellphone()
+			name = input(("name: (%s)") % ReplacedContact.getName())
+	cellphone = input(("cellphone: (%s)") % ReplacedContact.getCellphone())
 	while not CheckNumber(cellphone):
 			if cellphone != 'x':
 				print("the number must have only digit")
-				cellphone = input("cellphone: (%s)") % ReplacedContact.getCellphone()
+				cellphone = input(("cellphone: (%s)") % ReplacedContact.getCellphone())
 			else:
     				cellphone = ""
-	contact(name,cellphone,ReplacedContact)	
+	Contact(name,cellphone,ReplacedContact)	
 	pass
 def replaceFriendContact(ReplacedContact):
-	name = input("name: ( %s )") % ReplacedContact.getName()
+	name = input(("name: ( %s )") % ReplacedContact.getName())
 	while not CheckName(name):
 			print("the name must have a Value")
 			name = input(("name: ( %s )") % ReplacedContact.getName())
-	cellphone = input("cellphone: (%s)") % ReplacedContact.getCellphone()
+	cellphone = input(("cellphone: (%s)") % ReplacedContact.getCellphone())
 	while not CheckNumber(cellphone):
 			if cellphone != 'x':
 				print("the number must have only digit")
-				cellphone = input("cellphone: (%s)") % ReplacedContact.getCellphone()
+				cellphone = input(("cellphone: (%s)") % ReplacedContact.getCellphone())
 			else:
     				cellphone = ""	
-	homePhone = input("home phone: (%s)") % ReplacedContact.gethomePhone()
+	homePhone = input(("home phone: (%s)") % ReplacedContact.gethomePhone())
 	while not CheckNumber(homePhone):
 			if homePhone !="x":
 				print("the number must have only digit")
-				homePhone = input("home phone: (%s)") % ReplacedContact.gethomePhone()
+				homePhone = input(("home phone: (%s)") % (ReplacedContact.gethomePhone()))
 			else:
 				homePhone = ""					
-	personalEmail = input("personal Email (%s):") % ReplacedContact.getpersonalEmail()
+	personalEmail = input(("personal Email (%s):") % (ReplacedContact.getpersonalEmail()))
 	while (not CheckEmail(personalEmail)) or (personalEmail == ""):
 			if personalEmail != "x":
 				print("email must contain '.' and '@'")
-				personalEmail = input("personal Email (%s):") % ReplacedContact.getpersonalEmail()
+				personalEmail = input(("personal Email (%s):") % ReplacedContact.getpersonalEmail())
 			else:
 				personalEmail = ""
 	FriendContact(name,cellphone,homePhone,personalEmail,ReplacedContact)		
@@ -237,35 +237,35 @@ def replaceProfessional(ReplacedContact):
 	while not CheckNumber(cellphone):
 			if cellphone != 'x':
 				print("the number must have only digit")
-				cellphone = input("cellphone: (%s)") % ReplacedContact.getCellphone()
+				cellphone = input(("cellphone: (%s)") % ReplacedContact.getCellphone())
 			else:
     				cellphone = ""
-	workPhone = input("Work phone: (%s)") % ReplacedContact.getworkPhone()
+	workPhone = input(("Work phone: (%s)") % ReplacedContact.getworkPhone())
 	while not CheckNumber(workPhone):
 			if workPhone != "x":
 				print("the number must have only digit")
-				workPhone = input("Work phone: (%s)") % ReplacedContact.getworkPhone()	
+				workPhone = input(("Work phone: (%s)") % ReplacedContact.getworkPhone())	
 			else:
 				workPhone = ""			
-	workEmail = input("Work Email (%s):") % ReplacedContact.getWorkEmail()
+	workEmail = input(("Work Email (%s):") % ReplacedContact.getWorkEmail())
 	while (not CheckEmail(personalEmail)) or (personalEmail == ""):
 			if workEmail != "x":
 				print("email must contain '.' and '@'")
-				workEmail = input("Work Email (%s):") % ReplacedContact.getWorkEmail()
+				workEmail = input(("Work Email (%s):") % ReplacedContact.getWorkEmail())
 			else:
 				workEmail = ""
 	ProfessionalContact(name,cellphone,workPhone,workEmail,ReplacedContact)		
 	pass
 def replaceProffesionalFriendContact(ReplacedContact):
-	name = input("name: (%s)") % ReplacedContact.getName()
+	name = input(("name: (%s)") % ReplacedContact.getName)
 	while not CheckName(name):
 			print("the name must have a Value")
-			name = input("name: (%s)") % ReplacedContact.getName()
-	cellphone = input("cellphone: (%s)") % ReplacedContact.getCellphone()
+			name = input(("name: (%s)") % ReplacedContact.getName())
+	cellphone = input(("cellphone: (%s)") % ReplacedContact.getCellphone())
 	while not CheckNumber(cellphone):
 			if cellphone != 'x':
 				print("the number must have only digit")
-				cellphone = input("cellphone: (%s)") % ReplacedContact.getCellphone()
+				cellphone = input(("cellphone: (%s)") % ReplacedContact.getCellphone())
 			else:
     				cellphone = ""	
 	homePhone = input("home phone: (%s)") % ReplacedContact.gethomePhone()
@@ -315,7 +315,7 @@ def CheckNumber(phoneNo):
 	return False	 
 
 def CheckEmail(email):
-	if str.__contains__('@') and str.__contains__('.'):
+	if email.__contains__('@') and email.__contains__('.'):
 		return True
 	return False  
 

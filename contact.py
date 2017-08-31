@@ -4,9 +4,10 @@ class Contact(object):
 	def __init__(self,name,cellphone,olderContact = None):
 		if olderContact != None:	
 				olderContact.name = name
-
 				olderContact.cellphone = cellphone
-				self = olderContact	
+				
+				self.name = olderContact.name
+				self.cellphone =olderContact.cellphone	
 		else:
 				self.name = name
 				self.cellphone = cellphone
